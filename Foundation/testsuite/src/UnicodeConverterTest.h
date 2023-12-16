@@ -46,9 +46,9 @@ private:
 		T wtext, wtext2, wtext3;
 		Poco::UnicodeConverter::convert(text, wtext);
 		if (sizeof(typename T::value_type) == 2)
-			assertTrue (Poco::UnicodeConverter::UTFStrlen(wtext.data()) == 8);
+			assertTrue (Poco::UnicodeConverter::UTFStrlen(wtext.c_str()) == 8);
 		else if (sizeof(typename T::value_type) == 4)
-			assertTrue (Poco::UnicodeConverter::UTFStrlen(wtext.data()) == 5);
+			assertTrue (Poco::UnicodeConverter::UTFStrlen(wtext.c_str()) == 5);
 		Poco::UnicodeConverter::convert((const char*) supp, strlen((const char*) supp), wtext2);
 		Poco::UnicodeConverter::convert((const char*)supp, wtext3);
 		assertTrue (wtext == wtext2);
