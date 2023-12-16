@@ -170,15 +170,15 @@ public:
 					sizeof(_connectionName),
 					&messageLength)))
 				{
-					std::size_t len = sizeof(_connectionName) > none.length() ?
-						none.length() : sizeof(_connectionName) - 1;
-					std::memcpy(_connectionName, none.c_str(), len);
+					std::size_t len = sizeof(_connectionName) > none.size() ?
+						none.size() : sizeof(_connectionName) - 1;
+					std::memcpy(_connectionName, none.data(), len);
 				}
 				else if (0 == _connectionName[0])
 				{
-					std::size_t len = sizeof(_connectionName) > na.length() ?
-						na.length() : sizeof(_connectionName) - 1;
-					std::memcpy(_connectionName, na.c_str(), len);
+					std::size_t len = sizeof(_connectionName) > na.size() ?
+						na.size() : sizeof(_connectionName) - 1;
+					std::memcpy(_connectionName, na.data(), len);
 				}
 
 				if (Utility::isError(SQLGetDiagField(handleType,
@@ -191,13 +191,13 @@ public:
 				{
 					std::size_t len = sizeof(_serverName) > none.length() ?
 						none.length() : sizeof(_serverName) - 1;
-					std::memcpy(_serverName, none.c_str(), len);
+					std::memcpy(_serverName, none.data(), len);
 				}
 				else if (0 == _serverName[0])
 				{
 					std::size_t len = sizeof(_serverName) > na.length() ?
 						na.length() : sizeof(_serverName) - 1;
-					std::memcpy(_serverName, na.c_str(), len);
+					std::memcpy(_serverName, na.data(), len);
 				}
 			}
 

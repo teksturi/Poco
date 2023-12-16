@@ -117,7 +117,7 @@ void ECTest::testECDSASignSha256()
 			std::string msg("Test this sign message");
 			ECKey key(curveName);
 			ECDSADigestEngine eng(key, "SHA256");
-			eng.update(msg.c_str(), static_cast<unsigned>(msg.length()));
+			eng.update(msg.data(), static_cast<unsigned>(msg.length()));
 			const Poco::DigestEngine::Digest& sig = eng.signature();
 
 			// verify
@@ -127,7 +127,7 @@ void ECTest::testECDSASignSha256()
 			std::istringstream iPub(pubKey);
 			ECKey keyPub(&iPub);
 			ECDSADigestEngine eng2(keyPub, "SHA256");
-			eng2.update(msg.c_str(), static_cast<unsigned>(msg.length()));
+			eng2.update(msg.data(), static_cast<unsigned>(msg.length()));
 			assertTrue(eng2.verify(sig));
 		}
 		else
@@ -152,7 +152,7 @@ void ECTest::testECDSASignManipulated()
 			std::string msgManip("Test that sign message");
 			ECKey key(curveName);
 			ECDSADigestEngine eng(key, "SHA256");
-			eng.update(msg.c_str(), static_cast<unsigned>(msg.length()));
+			eng.update(msg.data(), static_cast<unsigned>(msg.length()));
 			const Poco::DigestEngine::Digest& sig = eng.signature();
 			std::string hexDig = Poco::DigestEngine::digestToHex(sig);
 
@@ -163,7 +163,7 @@ void ECTest::testECDSASignManipulated()
 			std::istringstream iPub(pubKey);
 			ECKey keyPub(&iPub);
 			ECDSADigestEngine eng2(keyPub, "SHA256");
-			eng2.update(msgManip.c_str(), static_cast<unsigned>(msgManip.length()));
+			eng2.update(msgManip.data(), static_cast<unsigned>(msgManip.length()));
 			assertTrue (!eng2.verify(sig));
 		}
 		else

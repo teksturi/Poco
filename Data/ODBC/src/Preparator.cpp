@@ -33,7 +33,7 @@ Preparator::Preparator(const StatementHandle& rStmt,
 	_maxFieldSize(maxFieldSize),
 	_dataExtraction(dataExtraction)
 {
-	SQLCHAR* pStr = (SQLCHAR*) statement.c_str();
+	SQLCHAR* pStr = (SQLCHAR*) statement.data();
 	if (Utility::isError(Poco::Data::ODBC::SQLPrepare(_rStmt, pStr, (SQLINTEGER) statement.length())))
 		throw StatementException(_rStmt, "ODBC::Preparator():SQLPrepare()");
 }

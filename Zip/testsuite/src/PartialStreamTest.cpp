@@ -55,7 +55,7 @@ void PartialStreamTest::testWriting()
 	std::string result(prefix+message+postfix);
 	std::ostringstream ostr;
 	PartialOutputStream out(ostr, prefix.size(), postfix.size());
-	out.write(result.c_str(), static_cast<std::streamsize>(result.length()));
+	out.write(result.data(), static_cast<std::streamsize>(result.length()));
 	assertTrue (out.good());
 	out.close();
 	std::string res (ostr.str());
@@ -72,7 +72,7 @@ void PartialStreamTest::testWritingZero()
 	std::string result(prefix+message+postfix);
 	std::ostringstream ostr;
 	PartialOutputStream out(ostr, prefix.size(), postfix.size());
-	out.write(result.c_str(), static_cast<std::streamsize>(result.length()));
+	out.write(result.data(), static_cast<std::streamsize>(result.length()));
 	assertTrue (out.good());
 	out.close();
 	std::string res (ostr.str());
@@ -89,7 +89,7 @@ void PartialStreamTest::testWritingOne()
 	std::string result(prefix+message+postfix);
 	std::ostringstream ostr;
 	PartialOutputStream out(ostr, prefix.size(), postfix.size());
-	out.write(result.c_str(), static_cast<std::streamsize>(result.length()));
+	out.write(result.data(), static_cast<std::streamsize>(result.length()));
 	assertTrue (out.good());
 	out.close();
 	std::string res (ostr.str());

@@ -214,13 +214,13 @@ void SQLExecutor::bareboneODBCTest(const std::string& dbConnString,
 			poco_odbc_check_stmt (rc, hstmt);
 
 			std::string sql = "DROP TABLE Test";
-			SQLCHAR* pStr = (SQLCHAR*) sql.c_str();
+			SQLCHAR* pStr = (SQLCHAR*) sql.data();
 			SQLExecDirect(hstmt, pStr, (SQLINTEGER) sql.length());
 			//no return code check - ignore drop errors
 
 			// create table and go
 			sql = tableCreateString;
-			pStr = (SQLCHAR*) sql.c_str();
+			pStr = (SQLCHAR*) sql.data();
 			rc = SQLPrepare(hstmt, pStr, (SQLINTEGER) sql.length());
 			poco_odbc_check_stmt (rc, hstmt);
 
@@ -228,7 +228,7 @@ void SQLExecutor::bareboneODBCTest(const std::string& dbConnString,
 			poco_odbc_check_stmt (rc, hstmt);
 
 			sql = format("INSERT INTO Test VALUES (?,?,%s,?,?,?)", blobPlaceholder);
-			pStr = (SQLCHAR*) sql.c_str();
+			pStr = (SQLCHAR*) sql.data();
 			rc = SQLPrepare(hstmt, pStr, (SQLINTEGER) sql.length());
 			poco_odbc_check_stmt (rc, hstmt);
 
@@ -259,7 +259,7 @@ void SQLExecutor::bareboneODBCTest(const std::string& dbConnString,
 				SQL_LONGVARCHAR,
 				(SQLUINTEGER) size,
 				0,
-				(SQLPOINTER) str[0].c_str(),
+				(SQLPOINTER) str[0].data(),
 				size,
 				&li[0]);
 			poco_odbc_check_stmt (rc, hstmt);
@@ -276,7 +276,7 @@ void SQLExecutor::bareboneODBCTest(const std::string& dbConnString,
 				SQL_LONGVARCHAR,
 				(SQLUINTEGER) size,
 				0,
-				(SQLPOINTER) str[1].c_str(),
+				(SQLPOINTER) str[1].data(),
 				size,
 				&li[1]);
 			poco_odbc_check_stmt (rc, hstmt);
@@ -392,7 +392,7 @@ void SQLExecutor::bareboneODBCTest(const std::string& dbConnString,
 			poco_odbc_check_stmt (rc, hstmt);
 
 			sql = "SELECT * FROM Test";
-			pStr = (SQLCHAR*) sql.c_str();
+			pStr = (SQLCHAR*) sql.data();
 			rc = SQLPrepare(hstmt, pStr, (SQLINTEGER) sql.length());
 			poco_odbc_check_stmt (rc, hstmt);
 
@@ -555,7 +555,7 @@ void SQLExecutor::bareboneODBCTest(const std::string& dbConnString,
 			poco_odbc_check_stmt (rc, hstmt);
 
 			sql = "DROP TABLE Test";
-			pStr = (SQLCHAR*) sql.c_str();
+			pStr = (SQLCHAR*) sql.data();
 			rc = SQLExecDirect(hstmt, pStr, (SQLINTEGER) sql.length());
 			poco_odbc_check_stmt (rc, hstmt);
 
@@ -613,13 +613,13 @@ void SQLExecutor::bareboneODBCMultiResultTest(const std::string& dbConnString,
 			poco_odbc_check_stmt (rc, hstmt);
 
 			std::string sql = "DROP TABLE Test";
-			SQLCHAR* pStr = (SQLCHAR*) sql.c_str();
+			SQLCHAR* pStr = (SQLCHAR*) sql.data();
 			SQLExecDirect(hstmt, pStr, (SQLINTEGER) sql.length());
 			//no return code check - ignore drop errors
 
 			// create table and go
 			sql = tableCreateString;
-			pStr = (SQLCHAR*) sql.c_str();
+			pStr = (SQLCHAR*) sql.data();
 			rc = SQLPrepare(hstmt, pStr, (SQLINTEGER) sql.length());
 			poco_odbc_check_stmt (rc, hstmt);
 
@@ -627,7 +627,7 @@ void SQLExecutor::bareboneODBCMultiResultTest(const std::string& dbConnString,
 			poco_odbc_check_stmt (rc, hstmt);
 
 			// insert multiple rows
-			pStr = (SQLCHAR*) insert.c_str();
+			pStr = (SQLCHAR*) insert.data();
 			rc = SQLPrepare(hstmt, pStr, (SQLINTEGER) insert.length());
 			poco_odbc_check_stmt (rc, hstmt);
 			rc = SQLExecute(hstmt);
@@ -643,7 +643,7 @@ void SQLExecutor::bareboneODBCMultiResultTest(const std::string& dbConnString,
 			sql = "select count(*) from Test";
 			int count = 0;
 			SQLLEN length = 0;
-			pStr = (SQLCHAR*) sql.c_str();
+			pStr = (SQLCHAR*) sql.data();
 			rc = SQLPrepare(hstmt, pStr, (SQLINTEGER) sql.length());
 			poco_odbc_check_stmt (rc, hstmt);
 			if (SQLExecutor::DE_BOUND == extractMode)
@@ -679,7 +679,7 @@ void SQLExecutor::bareboneODBCMultiResultTest(const std::string& dbConnString,
 			poco_odbc_check_stmt (rc, hstmt);
 
 			// select multiple rows
-			pStr = (SQLCHAR*) select.c_str();
+			pStr = (SQLCHAR*) select.data();
 			rc = SQLPrepare(hstmt, pStr, (SQLINTEGER) select.length());
 			poco_odbc_check_stmt (rc, hstmt);
 
@@ -766,7 +766,7 @@ void SQLExecutor::bareboneODBCMultiResultTest(const std::string& dbConnString,
 			assertTrue (5 == count);
 
 			sql = "DROP TABLE Test";
-			pStr = (SQLCHAR*) sql.c_str();
+			pStr = (SQLCHAR*) sql.data();
 			rc = SQLExecDirect(hstmt, pStr, (SQLINTEGER) sql.length());
 			poco_odbc_check_stmt (rc, hstmt);
 
@@ -851,13 +851,13 @@ void SQLExecutor::bareboneODBCStoredFuncTest(const std::string& dbConnString,
 		poco_odbc_check_stmt(rc, hstmt);
 
 		std::string sql = "DROP PROCEDURE TestStoredProcedure";
-		SQLCHAR* pStr = (SQLCHAR*)sql.c_str();
+		SQLCHAR* pStr = (SQLCHAR*)sql.data();
 		SQLExecDirect(hstmt, pStr, (SQLINTEGER)sql.length());
 		//no return code check - ignore drop errors
 
 		// create stored prcedure and go
 		sql = procCreateString;
-		pStr = (SQLCHAR*)sql.c_str();
+		pStr = (SQLCHAR*)sql.data();
 		rc = SQLPrepare(hstmt, pStr, (SQLINTEGER)sql.length());
 		poco_odbc_check_stmt(rc, hstmt);
 
@@ -869,7 +869,7 @@ void SQLExecutor::bareboneODBCStoredFuncTest(const std::string& dbConnString,
 		char retVal[10] = "";
 
 		sql = procExecuteString;
-		pStr = (SQLCHAR*)sql.c_str();
+		pStr = (SQLCHAR*)sql.data();
 		rc = SQLPrepare(hstmt, pStr, (SQLINTEGER)sql.length());
 		poco_odbc_check_stmt(rc, hstmt);
 
@@ -951,7 +951,7 @@ void SQLExecutor::bareboneODBCStoredFuncTest(const std::string& dbConnString,
 		assertTrue(std::string(retVal) == std::string(inParam));
 
 		sql = "DROP PROCEDURE TestStoredProcedure";
-		pStr = (SQLCHAR*)sql.c_str();
+		pStr = (SQLCHAR*)sql.data();
 		rc = SQLExecDirect(hstmt, pStr, (SQLINTEGER)sql.length());
 		poco_odbc_check_stmt(rc, hstmt);
 

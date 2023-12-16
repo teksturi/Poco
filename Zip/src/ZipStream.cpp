@@ -109,7 +109,7 @@ ZipStreamBuf::ZipStreamBuf(std::ostream& ostr, ZipLocalFileHeader& fileEntry, bo
 		fileEntry.setUncompressedSize(0);
 		fileEntry.setCRC(0);
 		std::string header = fileEntry.createHeader();
-		ostr.write(header.c_str(), static_cast<std::streamsize>(header.size()));
+		ostr.write(header.data(), static_cast<std::streamsize>(header.size()));
 	}
 	else
 	{
@@ -136,7 +136,7 @@ ZipStreamBuf::ZipStreamBuf(std::ostream& ostr, ZipLocalFileHeader& fileEntry, bo
         if (fileEntry.needsZip64())
             fileEntry.setZip64Data();
 		std::string header = fileEntry.createHeader();
-		ostr.write(header.c_str(), static_cast<std::streamsize>(header.size()));
+		ostr.write(header.data(), static_cast<std::streamsize>(header.size()));
 	}
 }
 
@@ -258,7 +258,7 @@ void ZipStreamBuf::close(Poco::UInt64& extraDataSize)
             if (_pHeader->hasExtraField())   // Update sizes in header extension.
                 _pHeader->setZip64Data();
 			std::string header = _pHeader->createHeader();
-			_pOstr->write(header.c_str(), static_cast<std::streamsize>(header.size()));
+			_pOstr->write(header.data(), static_cast<std::streamsize>(header.size()));
 			_pOstr->seekp(0, std::ios_base::end);
 			if (!*_pOstr) throw Poco::IOException("Bad output stream");
 		}

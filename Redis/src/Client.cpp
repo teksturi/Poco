@@ -179,7 +179,7 @@ void Client::writeCommand(const Array& command, bool doFlush)
 
 	std::string commandStr = command.toString();
 
-	_output->write(commandStr.c_str(), commandStr.length());
+	_output->write(commandStr.data(), commandStr.length());
 	if (doFlush) _output->flush();
 }
 

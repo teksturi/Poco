@@ -53,14 +53,14 @@ void StatementExecutor::prepare(const std::string& query)
 		return;
 	}
 
-	int rc = mysql_stmt_prepare(_pHandle, query.c_str(), static_cast<unsigned int>(query.length()));
+	int rc = mysql_stmt_prepare(_pHandle, query.data(), static_cast<unsigned int>(query.length()));
 	if (rc != 0)
 	{
 		// retry if connection lost
 		int err = mysql_errno(_pSessionHandle);
 		if (err == 2006 /* CR_SERVER_GONE_ERROR */ || err == 2013 /* CR_SERVER_LOST */)
 		{
-			rc = mysql_stmt_prepare(_pHandle, query.c_str(), static_cast<unsigned int>(query.length()));
+			rc = mysql_stmt_prepare(_pHandle, query.data(), static_cast<unsigned int>(query.length()));
 		}
 	}
 	if (rc != 0) throw StatementException("mysql_stmt_prepare error", _pHandle, query);

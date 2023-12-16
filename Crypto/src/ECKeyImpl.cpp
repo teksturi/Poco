@@ -233,7 +233,7 @@ int ECKeyImpl::getCurveNID(std::string& name)
 		{
 			std::memset(buf, 0, bufLen);
 			OBJ_obj2txt(buf, bufLen, OBJ_nid2obj(pCurves[i].nid), 0);
-			if (strncmp(name.c_str(), buf, name.size() > bufLen ? bufLen : name.size()) == 0)
+			if (strncmp(name.data(), buf, name.size() > bufLen ? bufLen : name.size()) == 0)
 			{
 				nid = pCurves[i].nid;
 				break;

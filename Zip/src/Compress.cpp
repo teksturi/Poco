@@ -130,7 +130,7 @@ void Compress::addFileRaw(std::istream& in, const ZipLocalFileHeader& h, const P
 	//bypass zipoutputstream
 	//write the header directly
 	std::string header = hdr.createHeader();
-	_out.write(header.c_str(), static_cast<std::streamsize>(header.size()));
+	_out.write(header.data(), static_cast<std::streamsize>(header.size()));
 	// now fwd the payload to _out in chunks of size CHUNKSIZE
 	Poco::UInt64 totalSize = hdr.getCompressedSize();
 	if (totalSize > 0)
@@ -181,7 +181,7 @@ void Compress::addFileRaw(std::istream& in, const ZipLocalFileHeader& h, const P
 			hdr.setZip64Data();
 		_out.seekp(hdr.getStartPos(), std::ios_base::beg);
 		std::string header = hdr.createHeader();
-		_out.write(header.c_str(), static_cast<std::streamsize>(header.size()));
+		_out.write(header.data(), static_cast<std::streamsize>(header.size()));
 		_out.seekp(0, std::ios_base::end);
 	}
 
@@ -334,7 +334,7 @@ ZipArchive Compress::close()
 		needZip64 = needZip64 || nfo.needsZip64();
 
 		std::string info(nfo.createHeader());
-		_out.write(info.c_str(), static_cast<std::streamsize>(info.size()));
+		_out.write(info.data(), static_cast<std::streamsize>(info.size()));
 		Poco::UInt32 entrySize = static_cast<Poco::UInt32>(info.size());
 		centralDirSize64 += entrySize;
 		_offset += entrySize;
@@ -353,7 +353,7 @@ ZipArchive Compress::close()
 		central.setHeaderOffset(_offset);
 		central.setTotalNumberOfDisks(1);
 		std::string centr(central.createHeader());
-		_out.write(centr.c_str(), static_cast<std::streamsize>(centr.size()));
+		_out.write(centr.data(), static_cast<std::streamsize>(centr.size()));
 		_out.flush();
 		_offset += centr.size();
 		_dirs64.insert(std::make_pair(0, central));
@@ -374,7 +374,7 @@ ZipArchive Compress::close()
 		central.setZipComment(_comment);
 	}
 	std::string centr(central.createHeader());
-	_out.write(centr.c_str(), static_cast<std::streamsize>(centr.size()));
+	_out.write(centr.data(), static_cast<std::streamsize>(centr.size()));
 	_out.flush();
 	_offset += centr.size();
 	_dirs.insert(std::make_pair(0, central));

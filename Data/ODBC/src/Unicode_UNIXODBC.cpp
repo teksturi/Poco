@@ -61,7 +61,7 @@ void makeUTF8(Poco::Buffer<SQLWCHAR>& buffer, SQLINTEGER length, SQLPOINTER pTar
 		throw DataFormatException("Error converting UTF-16 to UTF-8");
 
 	std::memset(pTarget, 0, targetLength);
-	std::strncpy((char*) pTarget, result.c_str(), result.size() < targetLength ? result.size() : targetLength);
+	std::strncpy((char*) pTarget, result.data(), result.size() < targetLength ? result.size() : targetLength);
 }
 
 
@@ -244,7 +244,7 @@ SQLRETURN SQLSetDescField(SQLHDESC hdesc,
 		return SQLSetDescFieldW(hdesc,
 			iRecord,
 			iField,
-			(SQLPOINTER) str.c_str(),
+			(SQLPOINTER) str.data(),
 			(SQLINTEGER) str.size() * sizeof(SQLWCHAR));
 	}
 
@@ -375,7 +375,7 @@ SQLRETURN SQLPrepare(SQLHSTMT hstmt,
 	std::string sqlStr;
 	makeUTF16(szSqlStr, cbSqlStr, sqlStr);
 
-	return SQLPrepareW(hstmt, (SQLWCHAR*) sqlStr.c_str(), (SQLINTEGER) sqlStr.size());
+	return SQLPrepareW(hstmt, (SQLWCHAR*) sqlStr.data(), (SQLINTEGER) sqlStr.size());
 }
 
 
@@ -391,7 +391,7 @@ SQLRETURN SQLSetConnectAttr(SQLHDBC hdbc,
 
 		return SQLSetConnectAttrW(hdbc,
 			fAttribute,
-			(SQLWCHAR*) str.c_str(),
+			(SQLWCHAR*) str.data(),
 			(SQLINTEGER) str.size() * sizeof(SQLWCHAR));
 	}
 
@@ -419,7 +419,7 @@ SQLRETURN SQLSetStmtAttr(SQLHSTMT hstmt,
 
 		return SQLSetStmtAttrW(hstmt,
 			fAttribute,
-			(SQLWCHAR*) str.c_str(),
+			(SQLWCHAR*) str.data(),
 			(SQLINTEGER) str.size());
 	}
 
@@ -599,7 +599,7 @@ SQLRETURN SQLDriverConnect(SQLHDBC hdbc,
 	Buffer<SQLWCHAR> out(cbConnStrOutMax);
 	SQLRETURN rc = SQLDriverConnectW(hdbc,
 		hwnd,
-		(SQLWCHAR*) connStrIn.c_str(),
+		(SQLWCHAR*) connStrIn.data(),
 		(SQLSMALLINT) connStrIn.size(),
 		out.begin(),
 		cbConnStrOutMax,
@@ -625,7 +625,7 @@ SQLRETURN SQLBrowseConnect(SQLHDBC hdbc,
 	Buffer<SQLWCHAR> bufConnStrOut(cbConnStrOutMax);
 
 	SQLRETURN rc = SQLBrowseConnectW(hdbc,
-		(SQLWCHAR*) str.c_str(),
+		(SQLWCHAR*) str.data(),
 		(SQLSMALLINT) str.size(),
 		bufConnStrOut.begin(),
 		(SQLSMALLINT) bufConnStrOut.size(),
@@ -682,7 +682,7 @@ SQLRETURN SQLNativeSql(SQLHDBC hdbc,
 	Buffer<SQLWCHAR> bufSQLOut(cbSqlStrMax);
 
 	SQLRETURN rc = SQLNativeSqlW(hdbc,
-		(SQLWCHAR*) str.c_str(),
+		(SQLWCHAR*) str.data(),
 		(SQLINTEGER) str.size(),
 		bufSQLOut.begin(),
 		(SQLINTEGER) bufSQLOut.size(),

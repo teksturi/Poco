@@ -290,7 +290,7 @@ void DataTest::testCLOB()
 	std::vector<char> vecAlpha(strAlpha.begin(), strAlpha.end());
 	std::vector<char> vecDigit(strDigit.begin(), strDigit.end());
 
-	CLOB blobNumStr(strDigit.c_str(), strDigit.size());
+	CLOB blobNumStr(strDigit.data(), strDigit.size());
 	assertTrue (blobNumStr.size() == strDigit.size());
 	assertTrue (0 == std::strncmp(strDigit.c_str(), blobNumStr.rawContent(), blobNumStr.size()));
 	assertTrue (*blobNumStr.begin() == '1');
@@ -303,7 +303,7 @@ void DataTest::testCLOB()
 	assertTrue (blobNumVec.size() == blobNumStr.size());
 	assertTrue (blobNumVec == blobNumStr);
 
-	CLOB blobChrStr(strAlpha.c_str(), strAlpha.size());
+	CLOB blobChrStr(strAlpha.data(), strAlpha.size());
 	CLOB blobChrVec(vecAlpha);
 	assertTrue (blobChrStr.size() == strAlpha.size());
 	assertTrue (0 == std::strncmp(strAlpha.c_str(), blobChrStr.rawContent(), blobChrStr.size()));

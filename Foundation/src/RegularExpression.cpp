@@ -86,7 +86,7 @@ RegularExpression::RegularExpression(const std::string& pattern, int options, bo
 	else // default RE_NEWLINE_CR
 		pcre2_set_newline_8(context, PCRE2_NEWLINE_CR);
 
-	_pcre = pcre2_compile_8(reinterpret_cast<const PCRE2_SPTR>(pattern.c_str()), pattern.length(), compileOptions(options), &errorCode, &errorOffset, context);
+	_pcre = pcre2_compile_8(reinterpret_cast<const PCRE2_SPTR>(pattern.data()), pattern.length(), compileOptions(options), &errorCode, &errorOffset, context);
 	pcre2_compile_context_free_8(context);
 
 	if (!_pcre)
@@ -122,7 +122,7 @@ int RegularExpression::match(const std::string& subject, std::string::size_type 
 	poco_assert (offset <= subject.length());
 
 	MatchData matchData(reinterpret_cast<pcre2_code_8*>(_pcre));
-	int rc = pcre2_match_8(reinterpret_cast<pcre2_code_8*>(_pcre), reinterpret_cast<const PCRE2_SPTR>(subject.c_str()), subject.size(), offset, matchOptions(options), matchData, nullptr);
+	int rc = pcre2_match_8(reinterpret_cast<pcre2_code_8*>(_pcre), reinterpret_cast<const PCRE2_SPTR>(subject.data()), subject.size(), offset, matchOptions(options), matchData, nullptr);
 	if (rc == PCRE2_ERROR_NOMATCH)
 	{
 		mtch.offset = std::string::npos;
@@ -157,7 +157,7 @@ int RegularExpression::match(const std::string& subject, std::string::size_type 
 	matches.clear();
 
 	MatchData matchData(reinterpret_cast<pcre2_code_8*>(_pcre));
-	int rc = pcre2_match_8(reinterpret_cast<pcre2_code_8*>(_pcre), reinterpret_cast<const PCRE2_SPTR>(subject.c_str()), subject.size(), offset, options & 0xFFFF, matchData, nullptr);
+	int rc = pcre2_match_8(reinterpret_cast<pcre2_code_8*>(_pcre), reinterpret_cast<const PCRE2_SPTR>(subject.data()), subject.size(), offset, options & 0xFFFF, matchData, nullptr);
 	if (rc == PCRE2_ERROR_NOMATCH)
 	{
 		return 0;
@@ -280,7 +280,7 @@ std::string::size_type RegularExpression::substOne(std::string& subject, std::st
 	if (offset >= subject.length()) return std::string::npos;
 
 	MatchData matchData(reinterpret_cast<pcre2_code_8*>(_pcre));
-	int rc = pcre2_match_8(reinterpret_cast<pcre2_code_8*>(_pcre), reinterpret_cast<const PCRE2_SPTR>(subject.c_str()), subject.size(), offset, matchOptions(options), matchData, nullptr);
+	int rc = pcre2_match_8(reinterpret_cast<pcre2_code_8*>(_pcre), reinterpret_cast<const PCRE2_SPTR>(subject.data()), subject.size(), offset, matchOptions(options), matchData, nullptr);
 	if (rc == PCRE2_ERROR_NOMATCH)
 	{
 		return std::string::npos;

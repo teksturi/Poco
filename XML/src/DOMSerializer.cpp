@@ -255,7 +255,7 @@ void DOMSerializer::handleCharacterData(const Text* pText) const
 	if (_pContentHandler)
 	{
 		const XMLString& data = pText->data();
-		_pContentHandler->characters(data.c_str(), 0, (int) data.length());
+		_pContentHandler->characters(data.data(), 0, (int) data.length());
 	}
 }
 
@@ -265,7 +265,7 @@ void DOMSerializer::handleComment(const Comment* pComment) const
 	if (_pLexicalHandler)
 	{
 		const XMLString& data = pComment->data();
-		_pLexicalHandler->comment(data.c_str(), 0, (int) data.length());
+		_pLexicalHandler->comment(data.data(), 0, (int) data.length());
 	}
 }
 

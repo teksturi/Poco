@@ -51,7 +51,7 @@ inline void makeUTF8(Poco::Buffer<wchar_t>& buffer, SQLINTEGER length, SQLPOINTE
 #pragma warning(push)
 #pragma warning(disable:4996) // deprecation warnings
 #endif
-	std::strncpy((char*) pTarget, result.c_str(), result.size() < targetLength ? result.size() : targetLength);
+	std::strncpy((char*) pTarget, result.data(), result.size() < targetLength ? result.size() : targetLength);
 #if defined(_MSC_VER)
 #pragma warning(pop)
 #endif

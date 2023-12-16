@@ -320,15 +320,15 @@ void SQLExecutor::barebonePostgreSQLTest(std::string host, std::string user, std
 	int paramFormats[5] = { 0 };
 
 
-	paramValues[0]  = const_cast<char*>(str[0].c_str());
+	paramValues[0]  = const_cast<char*>(str[0].data());
 	paramLengths[0] = static_cast<int>(str[0].length());
 	paramFormats[0] = 0;  // text
 
-	paramValues[1]	= const_cast<char*>(str[1].c_str());
+	paramValues[1]	= const_cast<char*>(str[1].data());
 	paramLengths[1] = static_cast<int>(str[1].length());
 	paramFormats[1] = 0;   // text
 
-	paramValues[2]	= const_cast<char*>(str[2].c_str());
+	paramValues[2]	= const_cast<char*>(str[2].data());
 	paramLengths[2] = static_cast<int>(str[2].length());
 	paramFormats[2] = 0;   // text
 

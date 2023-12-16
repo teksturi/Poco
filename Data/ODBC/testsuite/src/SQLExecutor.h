@@ -238,7 +238,7 @@ public:
 		assert (std::string("xyz") + number == strings.back());
 		assert (CLOB("abc0") == blobs.front());
 		CLOB blob("abc");
-		blob.appendRaw(number.c_str(), number.size());
+		blob.appendRaw(number.data(), number.size());
 		assert (blob == blobs.back());
 		assert (.5 == floats.front());
 		assert (floats.size() - 1 + .5 == floats.back());
@@ -291,7 +291,7 @@ public:
 		assert (std::string("xyz") + number == strings.back());
 		assert (CLOB("abc0") == blobs.front());
 		blob.assignRaw("abc", 3);
-		blob.appendRaw(number.c_str(), number.size());
+		blob.appendRaw(number.data(), number.size());
 		assert (blob == blobs.back());
 		assert (.5 == floats.front());
 		assert (floats.size() - 1 + .5 == floats.back());
@@ -373,7 +373,7 @@ public:
 		assert (std::string("xyz") + number == strings.back());
 		assert (CLOB("abc0") == blobs.front());
 		CLOB blob("abc");
-		blob.appendRaw(number.c_str(), number.size());
+		blob.appendRaw(number.data(), number.size());
 		assert (blob == blobs.back());
 		assert (.5 == floats.front());
 		assert (floats.size() - 1 + .5 == floats.back());
@@ -419,7 +419,7 @@ public:
 		assert (std::string("xyz") + number == strings.back());
 		assert (CLOB("abc0") == blobs.front());
 		blob.assignRaw("abc", 3);
-		blob.appendRaw(number.c_str(), number.size());
+		blob.appendRaw(number.data(), number.size());
 		assert (blob == blobs.back());
 		assert (.5 == floats.front());
 		assert (floats.size() - 1 + .5 == floats.back());

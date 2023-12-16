@@ -285,7 +285,7 @@ void ODBCStatementImpl::bindImpl()
 
 void ODBCStatementImpl::execDirectImpl(const std::string& query)
 {
-	SQLCHAR * statementText = (SQLCHAR*) query.c_str();
+	SQLCHAR * statementText = (SQLCHAR*) query.data();
 	SQLINTEGER textLength = static_cast<SQLINTEGER>(query.size());
 	SQLRETURN rc = SQLExecDirect(_stmt,statementText,textLength);
 
@@ -441,7 +441,7 @@ std::string ODBCStatementImpl::nativeSQL()
 		std::memset(pNative, 0, retlen);
 		length = retlen;
 		if (Utility::isError(SQLNativeSql(_rConnection,
-			(SQLCHAR*) statement.c_str(),
+			(SQLCHAR*) statement.data(),
 			(SQLINTEGER) statement.size(),
 			(SQLCHAR*) pNative,
 			length,

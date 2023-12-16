@@ -142,7 +142,7 @@ void Binder::bind(std::size_t pos, const std::string& val, Direction dir)
 	{
 		if (!pTCVal)
 		{
-			pVal = (SQLPOINTER)val.c_str();
+			pVal = (SQLPOINTER)val.data();
 			_inParams.insert(ParamMap::value_type(pVal, size));
 		}
 		else
@@ -197,7 +197,7 @@ void Binder::bind(std::size_t pos, const UTF16String& val, Direction dir)
 	}
 	else if (isInBound(dir))
 	{
-		pVal = (SQLPOINTER)val.c_str();
+		pVal = (SQLPOINTER)val.data();
 		_inParams.insert(ParamMap::value_type(pVal, size));
 	}
 	else

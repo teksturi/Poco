@@ -167,17 +167,17 @@ void SQLExecutor::bareboneMySQLTest(const char* host, const char* user, const ch
 	assertTrue (hstmt != 0);
 
 	std::string sql = "DROP TABLE Test";
-	mysql_real_query(hsession, sql.c_str(), static_cast<unsigned long>(sql.length()));
+	mysql_real_query(hsession, sql.data(), static_cast<unsigned long>(sql.length()));
 
 	sql = tableCreateString;
-	rc = mysql_stmt_prepare(hstmt, sql.c_str(), static_cast<unsigned long>(sql.length()));
+	rc = mysql_stmt_prepare(hstmt, sql.data(), static_cast<unsigned long>(sql.length()));
 	assertTrue (rc == 0);
 
 	rc = mysql_stmt_execute(hstmt);
 	assertTrue (rc == 0);
 
 	sql = "INSERT INTO Test VALUES (?,?,?,?,?)";
-	rc = mysql_stmt_prepare(hstmt, sql.c_str(), static_cast<unsigned long>(sql.length()));
+	rc = mysql_stmt_prepare(hstmt, sql.data(), static_cast<unsigned long>(sql.length()));
 	assertTrue (rc == 0);
 
 	std::string str[3] = { "111", "222", "333" };
@@ -186,15 +186,15 @@ void SQLExecutor::bareboneMySQLTest(const char* host, const char* user, const ch
 
 	MYSQL_BIND bind_param[5] = {{0}};
 
-	bind_param[0].buffer		= const_cast<char*>(str[0].c_str());
+	bind_param[0].buffer		= const_cast<char*>(str[0].data());
 	bind_param[0].buffer_length = static_cast<unsigned long>(str[0].length());
 	bind_param[0].buffer_type   = MYSQL_TYPE_STRING;
 
-	bind_param[1].buffer		= const_cast<char*>(str[1].c_str());
+	bind_param[1].buffer		= const_cast<char*>(str[1].data());
 	bind_param[1].buffer_length = static_cast<unsigned long>(str[1].length());
 	bind_param[1].buffer_type   = MYSQL_TYPE_STRING;
 
-	bind_param[2].buffer		= const_cast<char*>(str[2].c_str());
+	bind_param[2].buffer		= const_cast<char*>(str[2].data());
 	bind_param[2].buffer_length = static_cast<unsigned long>(str[2].length());
 	bind_param[2].buffer_type   = MYSQL_TYPE_STRING;
 
@@ -211,7 +211,7 @@ void SQLExecutor::bareboneMySQLTest(const char* host, const char* user, const ch
 	assertTrue (rc == 0);
 
 	sql = "SELECT * FROM Test";
-	rc = mysql_stmt_prepare(hstmt, sql.c_str(), static_cast<unsigned long>(sql.length()));
+	rc = mysql_stmt_prepare(hstmt, sql.data(), static_cast<unsigned long>(sql.length()));
 	assertTrue (rc == 0);
 
 	char chr[3][5] = {{ 0 }};
@@ -262,7 +262,7 @@ void SQLExecutor::bareboneMySQLTest(const char* host, const char* user, const ch
 	assertTrue (rc == 0);
 
 	sql = "DROP TABLE Test";
-	rc = mysql_real_query(hsession, sql.c_str(), static_cast<unsigned long>(sql.length()));
+	rc = mysql_real_query(hsession, sql.data(), static_cast<unsigned long>(sql.length()));
 	assertTrue (rc == 0);
 
 	mysql_close(hsession);

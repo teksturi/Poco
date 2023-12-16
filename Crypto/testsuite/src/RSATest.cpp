@@ -137,7 +137,7 @@ void RSATest::testSign()
 	std::string msg("Test this sign message");
 	RSAKey key(RSAKey::KL_2048, RSAKey::EXP_LARGE);
 	RSADigestEngine eng(key);
-	eng.update(msg.c_str(), static_cast<unsigned>(msg.length()));
+	eng.update(msg.data(), static_cast<unsigned>(msg.length()));
 	const Poco::DigestEngine::Digest& sig = eng.signature();
 	std::string hexDig = Poco::DigestEngine::digestToHex(sig);
 
@@ -148,7 +148,7 @@ void RSATest::testSign()
 	std::istringstream iPub(pubKey);
 	RSAKey keyPub(&iPub);
 	RSADigestEngine eng2(keyPub);
-	eng2.update(msg.c_str(), static_cast<unsigned>(msg.length()));
+	eng2.update(msg.data(), static_cast<unsigned>(msg.length()));
 	assertTrue (eng2.verify(sig));
 }
 
@@ -158,7 +158,7 @@ void RSATest::testSignSha256()
 	std::string msg("Test this sign message");
 	RSAKey key(RSAKey::KL_2048, RSAKey::EXP_LARGE);
 	RSADigestEngine eng(key, "SHA256");
-	eng.update(msg.c_str(), static_cast<unsigned>(msg.length()));
+	eng.update(msg.data(), static_cast<unsigned>(msg.length()));
 	const Poco::DigestEngine::Digest& sig = eng.signature();
 	std::string hexDig = Poco::DigestEngine::digestToHex(sig);
 
@@ -169,7 +169,7 @@ void RSATest::testSignSha256()
 	std::istringstream iPub(pubKey);
 	RSAKey keyPub(&iPub);
 	RSADigestEngine eng2(keyPub, "SHA256");
-	eng2.update(msg.c_str(), static_cast<unsigned>(msg.length()));
+	eng2.update(msg.data(), static_cast<unsigned>(msg.length()));
 	assertTrue (eng2.verify(sig));
 }
 
@@ -180,7 +180,7 @@ void RSATest::testSignManipulated()
 	std::string msgManip("Test that sign message");
 	RSAKey key(RSAKey::KL_2048, RSAKey::EXP_LARGE);
 	RSADigestEngine eng(key);
-	eng.update(msg.c_str(), static_cast<unsigned>(msg.length()));
+	eng.update(msg.data(), static_cast<unsigned>(msg.length()));
 	const Poco::DigestEngine::Digest& sig = eng.signature();
 	std::string hexDig = Poco::DigestEngine::digestToHex(sig);
 
@@ -191,7 +191,7 @@ void RSATest::testSignManipulated()
 	std::istringstream iPub(pubKey);
 	RSAKey keyPub(&iPub);
 	RSADigestEngine eng2(keyPub);
-	eng2.update(msgManip.c_str(), static_cast<unsigned>(msgManip.length()));
+	eng2.update(msgManip.data(), static_cast<unsigned>(msgManip.length()));
 	assertTrue (!eng2.verify(sig));
 }
 

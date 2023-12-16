@@ -80,7 +80,7 @@ private:
 //
 inline void Checksum::update(const std::string& data)
 {
-	update(data.c_str(), static_cast<unsigned int>(data.size()));
+	update(data.data(), static_cast<unsigned int>(data.size()));
 }
 
 

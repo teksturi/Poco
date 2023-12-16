@@ -605,7 +605,7 @@ private:
 				if (transcodeRequired()) delete pVal;
 				throw LengthExceededException(Poco::format("SQLBindParameter(%s)", typeID));
 			}
-			std::memcpy(_charPtrs[pos] + offset, it->c_str(), strSize);
+			std::memcpy(_charPtrs[pos] + offset, it->data(), strSize);
 			offset += size;
 		}
 		if (transcodeRequired()) delete pVal;

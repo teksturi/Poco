@@ -72,7 +72,7 @@ int PartialStreamBuf::readFromDevice(char* buffer, std::streamsize length)
 	if (!_prefix.empty())
 	{
 		std::streamsize tmp = (_prefix.size() > length)? length: static_cast<std::streamsize>(_prefix.size());
-		std::memcpy(buffer, _prefix.c_str(), tmp);
+		std::memcpy(buffer, _prefix.data(), tmp);
 		_prefix = _prefix.substr(tmp);
 		return static_cast<int>(tmp);
 	}
@@ -82,7 +82,7 @@ int PartialStreamBuf::readFromDevice(char* buffer, std::streamsize length)
 		if (!_postfix.empty())
 		{
 			std::streamsize tmp = (_postfix.size() > length)? length: static_cast<std::streamsize>(_postfix.size());
-			std::memcpy(buffer, _postfix.c_str(), tmp);
+			std::memcpy(buffer, _postfix.data(), tmp);
 			_postfix = _postfix.substr(tmp);
 			return static_cast<int>(tmp);
 		}

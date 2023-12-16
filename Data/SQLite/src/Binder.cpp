@@ -82,7 +82,7 @@ void Binder::bind(std::size_t pos, const double &val, Direction dir)
 
 void Binder::bind(std::size_t pos, const std::string& val, Direction dir)
 {
-	int rc = sqlite3_bind_text(_pStmt, (int) pos, val.c_str(), (int) val.size()*sizeof(char), SQLITE_TRANSIENT);
+	int rc = sqlite3_bind_text(_pStmt, (int) pos, val.data(), (int) val.size()*sizeof(char), SQLITE_TRANSIENT);
 	checkReturn(rc);
 }
 
