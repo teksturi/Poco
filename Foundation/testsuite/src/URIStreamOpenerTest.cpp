@@ -58,7 +58,7 @@ void URIStreamOpenerTest::testStreamOpenerFile()
 {
 	TemporaryFile tempFile;
 	std::string path = tempFile.path();
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	assertTrue (ostr.good());
 	ostr << "Hello, world!" << std::endl;
 	ostr.close();
@@ -80,7 +80,7 @@ void URIStreamOpenerTest::testStreamOpenerRelative()
 {
 	TemporaryFile tempFile;
 	std::string path = tempFile.path();
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	assertTrue (ostr.good());
 	ostr << "Hello, world!" << std::endl;
 	ostr.close();
@@ -100,7 +100,7 @@ void URIStreamOpenerTest::testStreamOpenerURI()
 {
 	TemporaryFile tempFile;
 	std::string path = tempFile.path();
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	assertTrue (ostr.good());
 	ostr << "Hello, world!" << std::endl;
 	ostr.close();
@@ -122,7 +122,7 @@ void URIStreamOpenerTest::testStreamOpenerURIResolve()
 {
 	TemporaryFile tempFile;
 	std::string path = tempFile.path();
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	assertTrue (ostr.good());
 	ostr << "Hello, world!" << std::endl;
 	ostr.close();
@@ -148,7 +148,7 @@ void URIStreamOpenerTest::testStreamOpenerPath()
 {
 	TemporaryFile tempFile;
 	std::string path = tempFile.path();
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	assertTrue (ostr.good());
 	ostr << "Hello, world!" << std::endl;
 	ostr.close();
@@ -165,7 +165,7 @@ void URIStreamOpenerTest::testStreamOpenerPathResolve()
 {
 	TemporaryFile tempFile;
 	std::string path = tempFile.path();
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	assertTrue (ostr.good());
 	ostr << "Hello, world!" << std::endl;
 	ostr.close();

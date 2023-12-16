@@ -288,7 +288,7 @@ protected:
 		{
 			ProcessHandle proc = Process::launch(exec, args);
 			proc.wait();
-			return new Preprocessor(proc, new std::ifstream(pp.getFileName().c_str()), pp.getFileName());
+			return new Preprocessor(proc, new std::ifstream(pp.getFileName()), pp.getFileName());
 		}
 	}
 
@@ -423,8 +423,8 @@ protected:
 		if (source.getExtension() == "thtml")
 		{
 			dd.setExtension("html");
-			std::ifstream istr(source.toString().c_str());
-			std::ofstream ostr(dd.toString().c_str());
+			std::ifstream istr(source.toString());
+			std::ofstream ostr(dd.toString());
 			while (istr.good())
 			{
 				std::string line;

@@ -440,15 +440,15 @@ void FileTest::testCopyDirectory()
 	File fd2(pd2);
 	fd2.createDirectories();
 	Path pf1(pd1, "testfile1.dat");
-	std::ofstream ostr1(pf1.toString().c_str());
+	std::ofstream ostr1(pf1.toString());
 	ostr1 << "Hello, world!" << std::endl;
 	ostr1.close();
 	Path pf2(pd1, "testfile2.dat");
-	std::ofstream ostr2(pf2.toString().c_str());
+	std::ofstream ostr2(pf2.toString());
 	ostr2 << "Hello, world!" << std::endl;
 	ostr2.close();
 	Path pf3(pd2, "testfile3.dat");
-	std::ofstream ostr3(pf3.toString().c_str());
+	std::ofstream ostr3(pf3.toString());
 	ostr3 << "Hello, world!" << std::endl;
 	ostr3.close();
 
@@ -504,11 +504,11 @@ void FileTest::testCopyDirectoryFailIfExists()
 	}
 	fd1.createDirectories();
 	Path pf1(pd1, "testfile1.dat");
-	std::ofstream ostr1(pf1.toString().c_str());
+	std::ofstream ostr1(pf1.toString());
 	ostr1 << "Hello, world!" << std::endl;
 	ostr1.close();
 	Path pf2(pd1, "testfile2.dat");
-	std::ofstream ostr2(pf2.toString().c_str());
+	std::ofstream ostr2(pf2.toString());
 	ostr2 << "Hello, world!" << std::endl;
 	ostr2.close();
 

@@ -139,7 +139,7 @@ protected:
 			if (!args.empty())
 				outputDir.parseDirectory(args[0]);
 
-			std::ifstream in(_zipFile.c_str(), std::ios::binary);
+			std::ifstream in(_zipFile, std::ios::binary);
 			Poco::Zip::Decompress c(in, outputDir);
 			DecompressHandler handler;
 			c.EError += Poco::Delegate<DecompressHandler, std::pair<const ZipLocalFileHeader, const std::string> >(&handler, &DecompressHandler::onError);

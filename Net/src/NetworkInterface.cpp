@@ -1544,7 +1544,7 @@ void setInterfaceParams(struct ifaddrs* iface, NetworkInterfaceImpl& impl)
 	std::string addrPath(ifPath);
 	addrPath += "/address";
 
-	std::ifstream addrStream(addrPath.c_str());
+	std::ifstream addrStream(addrPath);
 	if (addrStream.good())
 	{
 		std::string addr;
@@ -1561,7 +1561,7 @@ void setInterfaceParams(struct ifaddrs* iface, NetworkInterfaceImpl& impl)
 
 	std::string typePath(ifPath);
 	typePath += "/type";
-	std::ifstream typeStream(typePath.c_str());
+	std::ifstream typeStream(typePath);
 	if (typeStream.good())
 	{
 		int type;

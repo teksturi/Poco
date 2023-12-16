@@ -119,7 +119,7 @@ protected:
 			}
 			else
 			{
-				std::ofstream out(_outFile.c_str(), std::ios::binary);
+				std::ofstream out(_outFile, std::ios::binary);
 				Poco::Zip::Compress c(out, true);
 				c.EDone += Poco::Delegate<ZipApp, const Poco::Zip::ZipLocalFileHeader>(this, &ZipApp::onDone);
 				for (std::vector<std::string>::const_iterator it = args.begin(); it != args.end(); ++it)

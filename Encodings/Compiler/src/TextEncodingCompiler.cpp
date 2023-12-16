@@ -257,7 +257,7 @@ protected:
 			std::string headerPath("include/Poco/");
 			headerPath += _className;
 			headerPath += ".h";
-			std::ofstream headerStream(headerPath.c_str());
+			std::ofstream headerStream(headerPath);
 			if (headerStream.good())
 				headerStream << _pVars->expand(HEADER_TEMPLATE);
 			if (!headerStream.good()) throw Poco::CreateFileException(headerPath);
@@ -266,7 +266,7 @@ protected:
 			std::string implPath("src/");
 			implPath += _className;
 			implPath += ".cpp";
-			std::ofstream implStream(implPath.c_str());
+			std::ofstream implStream(implPath);
 			if (implStream.good())
 				implStream << _pVars->expand(IMPL_TEMPLATE);
 			if (!implStream.good()) throw Poco::CreateFileException(implPath);

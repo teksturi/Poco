@@ -133,7 +133,7 @@ void DocWriter::writeNavigation()
 	std::string software(app.config().getString("PocoDoc.software", ""));
 
 	std::string path(pathFor("navigation.html"));
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	if (!ostr.good()) throw Poco::CreateFileException(path);
 	writeHeader(ostr, tr("Navigation"), "js/iframeResizer.contentWindow.min.js", NO_CUSTOM_HTML);
 	beginBody(ostr);
@@ -306,7 +306,7 @@ void DocWriter::writeEclipseTOC()
 	std::string dir = p[p.depth() - 1];
 	dir.append("/");
 	p.popDirectory();
-	std::ofstream ostr(p.toString().c_str());
+	std::ofstream ostr(p.toString());
 	if (!ostr.good()) throw Poco::CreateFileException(path);
 
 	ostr << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << std::endl;
@@ -385,7 +385,7 @@ void DocWriter::writeClass(const Struct* pStruct)
 {
 	_pNameSpace = pStruct;
 	std::string path(pathFor(fileNameFor(pStruct)));
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	if (!ostr.good()) throw Poco::CreateFileException(path);
 	std::string header;
 	if (pStruct->isClass())
@@ -437,7 +437,7 @@ void DocWriter::writeNameSpace(const NameSpace* pNameSpace)
 {
 	_pNameSpace = pNameSpace;
 	std::string path(pathFor(fileNameFor(pNameSpace)));
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	if (!ostr.good()) throw Poco::CreateFileException(path);
 	writeHeader(ostr, tr("Namespace") + " " + pNameSpace->fullName(), "js/iframeResizer.min.js");
 	writeTitle(ostr, pNameSpace->nameSpace(), std::string("namespace ") + pNameSpace->name());
@@ -467,7 +467,7 @@ void DocWriter::writeNameSpace(const NameSpace* pNameSpace)
 void DocWriter::writePackage(const std::string& file, const std::string& library, const std::string& package)
 {
 	std::string path(pathFor(file));
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	if (!ostr.good()) throw Poco::CreateFileException(path);
 	writeHeader(ostr, tr("Package_Index"), "js/iframeResizer.min.js");
 	writeTitle(ostr, tr("Library") + " " + library, tr("Package") + " " + package);
@@ -2278,7 +2278,7 @@ void DocWriter::writePages()
 
 void DocWriter::writePage(Page& page)
 {
-	std::ifstream istr(page.path.c_str());
+	std::ifstream istr(page.path);
 	if (!istr.good()) throw Poco::OpenFileException(page.path);
 	std::string title;
 	std::string category;
@@ -2303,7 +2303,7 @@ void DocWriter::writePage(Page& page)
 	scanTOC(text, toc);
 
 	std::string path(pathFor(page.fileName));
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	if (!ostr.good()) throw Poco::CreateFileException(path);
 	writeHeader(ostr, title, "js/iframeResizer.min.js");
 	writeTitle(ostr, tr(category), title);
@@ -2396,7 +2396,7 @@ void DocWriter::writeTOC(std::ostream& ostr, const TOC& toc)
 
 void DocWriter::writeCategoryIndex(const std::string& category, const std::string& fileName)
 {
-	std::ofstream ostr(pathFor(fileName).c_str());
+	std::ofstream ostr(pathFor(fileName));
 	if (!ostr.good()) throw Poco::CreateFileException(fileName);
 	writeHeader(ostr, tr(category));
 	beginBody(ostr);

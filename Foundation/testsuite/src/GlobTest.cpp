@@ -488,7 +488,7 @@ void GlobTest::createFile(const std::string& path)
 	Path p(path, Path::PATH_UNIX);
 	File dir(p.parent());
 	dir.createDirectories();
-	std::ofstream ostr(path.c_str());
+	std::ofstream ostr(path);
 	ostr << path << std::endl;
 }
 

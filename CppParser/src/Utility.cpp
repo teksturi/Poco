@@ -76,7 +76,7 @@ void Utility::fixup(NameSpace::SymbolTable& st)
 
 void Utility::detectPrefixAndIncludes(const std::string& origHFile, std::vector<std::string>& lines, std::string& prefix)
 {
-	std::ifstream istr(origHFile.c_str());
+	std::ifstream istr(origHFile);
 	try
 	{
 		if (istr.good())
@@ -209,7 +209,7 @@ std::string Utility::preprocessFile(const std::string& file, const std::string& 
 
 void Utility::parseOnly(const std::string& file, NameSpace::SymbolTable& st, const std::string& preprocessedFile, bool removePreprocessedFile)
 {
-	std::ifstream istr(preprocessedFile.c_str());
+	std::ifstream istr(preprocessedFile);
 	try
 	{
 		if (istr.good())

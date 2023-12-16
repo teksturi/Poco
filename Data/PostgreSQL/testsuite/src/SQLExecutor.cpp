@@ -283,7 +283,7 @@ void SQLExecutor::barebonePostgreSQLTest(std::string host, std::string user, std
 
 	pResult = PQexec(pConnection, sql.c_str());
 
-	std::cout << "Drop Table Test Result: " <<  PQresStatus(PQresultStatus(pResult)) << " statement: "<< sql.c_str() << std::endl;
+	std::cout << "Drop Table Test Result: " <<  PQresStatus(PQresultStatus(pResult)) << " statement: "<< sql << std::endl;
 
 	assertTrue (	PQresultStatus(pResult) == PGRES_COMMAND_OK
 			|| PQresultStatus(pResult) == PGRES_FATAL_ERROR);
@@ -293,7 +293,7 @@ void SQLExecutor::barebonePostgreSQLTest(std::string host, std::string user, std
 	sql = tableCreateString;
 	pResult = PQexec(pConnection, sql.c_str());
 
-	std::cout << "create Table Test Result: " <<  PQresStatus(PQresultStatus(pResult)) << " statement: "<< sql.c_str() << std::endl;
+	std::cout << "create Table Test Result: " <<  PQresStatus(PQresultStatus(pResult)) << " statement: "<< sql << std::endl;
 
 	assertTrue (PQresultStatus(pResult) == PGRES_COMMAND_OK);
 	PQclear(pResult);
@@ -349,7 +349,7 @@ void SQLExecutor::barebonePostgreSQLTest(std::string host, std::string user, std
 								1 // ask for binary resilts
 							);
 
-	std::cout << "exec prepared Test Result: " <<  PQresStatus(PQresultStatus(pResult)) << " statement: "<< sql.c_str() << std::endl;
+	std::cout << "exec prepared Test Result: " <<  PQresStatus(PQresultStatus(pResult)) << " statement: "<< sql << std::endl;
 
 	assertTrue (PQresultStatus(pResult) == PGRES_COMMAND_OK);
 	PQclear(pResult);
@@ -357,7 +357,7 @@ void SQLExecutor::barebonePostgreSQLTest(std::string host, std::string user, std
 	sql = "SELECT * FROM Test";
 	pResult = PQexec(pConnection, sql.c_str());
 
-	std::cout << "select * Test Result: " <<  PQresStatus(PQresultStatus(pResult)) << " statement: "<< sql.c_str() << std::endl;
+	std::cout << "select * Test Result: " <<  PQresStatus(PQresultStatus(pResult)) << " statement: "<< sql << std::endl;
 
 	assertTrue (PQresultStatus(pResult) == PGRES_TUPLES_OK);
 

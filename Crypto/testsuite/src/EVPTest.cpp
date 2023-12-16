@@ -486,8 +486,8 @@ void EVPTest::testECEVPSaveLoadFile()
 			TemporaryFile filePub;
 			TemporaryFile filePriv;
 			key.save(filePub.path(), filePriv.path(), "testpwd");
-			std::ifstream ifPub(filePub.path().c_str());
-			std::ifstream ifPriv(filePriv.path().c_str());
+			std::ifstream ifPub(filePub.path());
+			std::ifstream ifPriv(filePriv.path());
 			std::string pubKey;
 			std::string privKey;
 			StreamCopier::copyToString(ifPub, pubKey);
@@ -541,8 +541,8 @@ void EVPTest::testECEVPSaveLoadFileNoPass()
 			TemporaryFile filePub;
 			TemporaryFile filePriv;
 			key.save(filePub.path(), filePriv.path());
-			std::ifstream ifPub(filePub.path().c_str());
-			std::ifstream ifPriv(filePriv.path().c_str());
+			std::ifstream ifPub(filePub.path());
+			std::ifstream ifPriv(filePriv.path());
 			std::string pubKey;
 			std::string privKey;
 			StreamCopier::copyToString(ifPub, pubKey);
