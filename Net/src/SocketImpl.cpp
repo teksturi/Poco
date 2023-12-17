@@ -24,7 +24,7 @@
 
 #if defined(POCO_HAVE_FD_EPOLL)
 	#ifdef POCO_OS_FAMILY_WINDOWS
-		#include "wepoll.h"
+		#include "external/wepoll/wepoll.h"
 		#include "mswsock.h"
 	#else
 		#include <sys/epoll.h>

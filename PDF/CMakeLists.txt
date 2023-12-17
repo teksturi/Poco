@@ -13,17 +13,17 @@ if(POCO_UNBUNDLED)
 else()
 	# zlib
 	POCO_SOURCES(SRCS zlib
-		src/adler32.c
-		src/compress.c
-		src/crc32.c
-		src/deflate.c
-		src/gzio.c
-		src/infback.c
-		src/inffast.c
-		src/inflate.c
-		src/inftrees.c
-		src/trees.c
-		src/zutil.c
+		src/external/zlib/adler32.c
+		src/external/zlib/compress.c
+		src/external/zlib/crc32.c
+		src/external/zlib/deflate.c
+		src/external/zlib/gzio.c
+		src/external/zlib/infback.c
+		src/external/zlib/inffast.c
+		src/external/zlib/inflate.c
+		src/external/zlib/inftrees.c
+		src/external/zlib/trees.c
+		src/external/zlib/zutil.c
 	)
 endif(POCO_UNBUNDLED)
 
@@ -31,86 +31,86 @@ endif(POCO_UNBUNDLED)
 # with an unbundled version of hpdf
 # hpdf
 POCO_SOURCES(SRCS hpdf
-	src/hpdf_3dmeasure.c
-	src/hpdf_annotation.c
-	src/hpdf_array.c
-	src/hpdf_binary.c
-	src/hpdf_boolean.c
-	src/hpdf_catalog.c
-	src/hpdf_destination.c
-	src/hpdf_dict.c
-	src/hpdf_doc.c
-	src/hpdf_doc_png.c
-	src/hpdf_encoder.c
-	src/hpdf_encoder_cns.c
-	src/hpdf_encoder_cnt.c
-	src/hpdf_encoder_jp.c
-	src/hpdf_encoder_kr.c
-	src/hpdf_encoder_utf.c
-	src/hpdf_encrypt.c
-	src/hpdf_encryptdict.c
-	src/hpdf_error.c
-	src/hpdf_exdata.c
-	src/hpdf_ext_gstate.c
-	src/hpdf_font.c
-	src/hpdf_font_cid.c
-	src/hpdf_font_tt.c
-	src/hpdf_font_type1.c
-	src/hpdf_fontdef.c
-	src/hpdf_fontdef_base14.c
-	src/hpdf_fontdef_cid.c
-	src/hpdf_fontdef_cns.c
-	src/hpdf_fontdef_cnt.c
-	src/hpdf_fontdef_jp.c
-	src/hpdf_fontdef_kr.c
-	src/hpdf_fontdef_tt.c
-	src/hpdf_fontdef_type1.c
-	src/hpdf_gstate.c
-	src/hpdf_image.c
-	src/hpdf_image_ccitt.c
-	src/hpdf_image_png.c
-	src/hpdf_info.c
-	src/hpdf_list.c
-	src/hpdf_mmgr.c
-	src/hpdf_name.c
-	src/hpdf_namedict.c
-	src/hpdf_null.c
-	src/hpdf_number.c
-	src/hpdf_objects.c
-	src/hpdf_outline.c
-	src/hpdf_page_label.c
-	src/hpdf_page_operator.c
-	src/hpdf_pages.c
-	src/hpdf_pdfa.c
-	src/hpdf_real.c
-	src/hpdf_streams.c
-	src/hpdf_string.c
-	src/hpdf_u3d.c
-	src/hpdf_utils.c
-	src/hpdf_xref.c
+	src/external/libharu/hpdf_3dmeasure.c
+	src/external/libharu/hpdf_annotation.c
+	src/external/libharu/hpdf_array.c
+	src/external/libharu/hpdf_binary.c
+	src/external/libharu/hpdf_boolean.c
+	src/external/libharu/hpdf_catalog.c
+	src/external/libharu/hpdf_destination.c
+	src/external/libharu/hpdf_dict.c
+	src/external/libharu/hpdf_doc.c
+	src/external/libharu/hpdf_doc_png.c
+	src/external/libharu/hpdf_encoder.c
+	src/external/libharu/hpdf_encoder_cns.c
+	src/external/libharu/hpdf_encoder_cnt.c
+	src/external/libharu/hpdf_encoder_jp.c
+	src/external/libharu/hpdf_encoder_kr.c
+	src/external/libharu/hpdf_encoder_utf.c
+	src/external/libharu/hpdf_encrypt.c
+	src/external/libharu/hpdf_encryptdict.c
+	src/external/libharu/hpdf_error.c
+	src/external/libharu/hpdf_exdata.c
+	src/external/libharu/hpdf_ext_gstate.c
+	src/external/libharu/hpdf_font.c
+	src/external/libharu/hpdf_font_cid.c
+	src/external/libharu/hpdf_font_tt.c
+	src/external/libharu/hpdf_font_type1.c
+	src/external/libharu/hpdf_fontdef.c
+	src/external/libharu/hpdf_fontdef_base14.c
+	src/external/libharu/hpdf_fontdef_cid.c
+	src/external/libharu/hpdf_fontdef_cns.c
+	src/external/libharu/hpdf_fontdef_cnt.c
+	src/external/libharu/hpdf_fontdef_jp.c
+	src/external/libharu/hpdf_fontdef_kr.c
+	src/external/libharu/hpdf_fontdef_tt.c
+	src/external/libharu/hpdf_fontdef_type1.c
+	src/external/libharu/hpdf_gstate.c
+	src/external/libharu/hpdf_image.c
+	src/external/libharu/hpdf_image_ccitt.c
+	src/external/libharu/hpdf_image_png.c
+	src/external/libharu/hpdf_info.c
+	src/external/libharu/hpdf_list.c
+	src/external/libharu/hpdf_mmgr.c
+	src/external/libharu/hpdf_name.c
+	src/external/libharu/hpdf_namedict.c
+	src/external/libharu/hpdf_null.c
+	src/external/libharu/hpdf_number.c
+	src/external/libharu/hpdf_objects.c
+	src/external/libharu/hpdf_outline.c
+	src/external/libharu/hpdf_page_label.c
+	src/external/libharu/hpdf_page_operator.c
+	src/external/libharu/hpdf_pages.c
+	src/external/libharu/hpdf_pdfa.c
+	src/external/libharu/hpdf_real.c
+	src/external/libharu/hpdf_streams.c
+	src/external/libharu/hpdf_string.c
+	src/external/libharu/hpdf_u3d.c
+	src/external/libharu/hpdf_utils.c
+	src/external/libharu/hpdf_xref.c
 )
 
 # TODO: Currently only bundled is supported, in future this should also be possible
 # with an unbundled version of libpng
 POCO_SOURCES(SRCS libpng
-	src/png.c
-	src/pngerror.c
-	src/pnggccrd.c
-	src/pngget.c
-	src/pngmem.c
-	src/pngpread.c
-	src/pngread.c
-	src/pngrio.c
-	src/pngrtran.c
-	src/pngrutil.c
-	src/pngset.c
-	src/pngtest.c
-	src/pngtrans.c
-	src/pngvcrd.c
-	src/pngwio.c
-	src/pngwrite.c
-	src/pngwtran.c
-	src/pngwutil.c
+	src/external/libpng/png.c
+	src/external/libpng/pngerror.c
+	src/external/libpng/pnggccrd.c
+	src/external/libpng/pngget.c
+	src/external/libpng/pngmem.c
+	src/external/libpng/pngpread.c
+	src/external/libpng/pngread.c
+	src/external/libpng/pngrio.c
+	src/external/libpng/pngrtran.c
+	src/external/libpng/pngrutil.c
+	src/external/libpng/pngset.c
+	src/external/libpng/pngtest.c
+	src/external/libpng/pngtrans.c
+	src/external/libpng/pngvcrd.c
+	src/external/libpng/pngwio.c
+	src/external/libpng/pngwrite.c
+	src/external/libpng/pngwtran.c
+	src/external/libpng/pngwutil.c
 )
 
 # Version Resource
@@ -121,6 +121,9 @@ endif()
 
 #TODO: Can we put this with the below includes? PRIVAT eg.
 include_directories("include/Poco/PDF") # zip src
+include_directories("include/Poco/PDF/External/libharu")
+include_directories("include/Poco/PDF/External/libpng")
+include_directories("include/Poco/PDF/External/zlib")
 
 add_library(PDF ${SRCS})
 add_library(Poco::PDF ALIAS PDF)

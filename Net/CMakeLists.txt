@@ -7,8 +7,8 @@ file(GLOB_RECURSE HDRS_G "include/*.h")
 POCO_HEADERS_AUTO(SRCS ${HDRS_G})
 
 # Platform Specific
-POCO_SOURCES_AUTO_PLAT(SRCS WIN32 src/wepoll.c)
-POCO_HEADERS_AUTO(SRCS src/wepoll.h)
+POCO_SOURCES_AUTO_PLAT(SRCS WIN32 src/external/wepoll/wepoll.c)
+POCO_HEADERS_AUTO(SRCS src/external/wepoll/wepoll.h)
 
 # Version Resource
 if(MSVC AND BUILD_SHARED_LIBS)

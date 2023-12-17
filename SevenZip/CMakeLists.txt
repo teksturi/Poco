@@ -9,42 +9,42 @@ POCO_HEADERS_AUTO(SRCS ${HDRS_G})
 # TODO: Currently only bundled is supported, in future this should also be possible
 # with an unbundled version of 7z
 POCO_SOURCES(SRCS 7z
-	src/7zAlloc.c
-	src/7zBuf2.c
-	src/7zBuf.c
-	src/7zCrc.c
-	src/7zCrcOpt.c
-	src/7zDec.c
-	src/7zFile.c
-	src/7zIn.c
-	src/7zStream.c
-	src/Alloc.c
-	src/Bcj2.c
-	src/Bra86.c
-	src/Bra.c
-#	 src/BraIA64.c
-	src/CpuArch.c
-#	 src/Delta.c
-#	 src/LzFind.c
-#	 src/LzFindMt.c
-	src/Lzma2Dec.c
-#	 src/Lzma2Enc.c
-	src/Lzma86Dec.c
-#	 src/Lzma86Enc.c
-	src/LzmaDec.c
-#	 src/LzmaEnc.c
-#	 src/LzmaLib.c
-#	 src/MtCoder.c
-	src/Ppmd7.c
-	src/Ppmd7Dec.c
-#	 src/Ppmd7Enc.c
-#	 src/Sha256.c
-#	 src/Threads.c
-#	 src/Xz.c
-#	 src/XzCrc64.c
-#	 src/XzDec.c
-#	 src/XzEnc.c
-#	 src/XzIn.c
+	src/external/7z/7zAlloc.c
+	src/external/7z//7zBuf2.c
+	src/external/7z//7zBuf.c
+	src/external/7z//7zCrc.c
+	src/external/7z//7zCrcOpt.c
+	src/external/7z//7zDec.c
+	src/external/7z//7zFile.c
+	src/external/7z//7zIn.c
+	src/external/7z//7zStream.c
+	src/external/7z//Alloc.c
+	src/external/7z//Bcj2.c
+	src/external/7z//Bra86.c
+	src/external/7z//Bra.c
+	# src/external/7z//BraIA64.c
+	src/external/7z//CpuArch.c
+	# src/external/7z//Delta.c
+	# src/external/7z//LzFind.c
+	# src/external/7z//LzFindMt.c
+	src/external/7z//Lzma2Dec.c
+	# src/external/7z/Lzma2Enc.c
+	src/external/7z/Lzma86Dec.c
+	# src/external/7z/Lzma86Enc.c
+	src/external/7z/LzmaDec.c
+	# src/external/7z/LzmaEnc.c
+	# src/external/7z/LzmaLib.c
+	# src/external/7z/MtCoder.c
+	src/external/7z/Ppmd7.c
+	src/external/7z/Ppmd7Dec.c
+	# src/external/7z/Ppmd7Enc.c
+	# src/external/7z/Sha256.c
+	# src/external/7z/Threads.c
+	# src/external/7z/Xz.c
+	# src/external/7z/XzCrc64.c
+	# src/external/7z/XzDec.c
+	# src/external/7z/XzEnc.c
+	# src/external/7z/XzIn.c
 )
 
 # Version Resource

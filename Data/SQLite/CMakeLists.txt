@@ -11,11 +11,11 @@ if(POCO_UNBUNDLED)
 else()
 	# sqlite3
 	POCO_SOURCES(SQLITE_SRCS sqlite3
-		src/sqlite3.c
+		src/external/sqlite/sqlite3.c
 	)
 
 	POCO_HEADERS(SQLITE_SRCS sqlite3
-		src/sqlite3.h
+		src/external/sqlite/sqlite3.h
 	)
 endif()
 

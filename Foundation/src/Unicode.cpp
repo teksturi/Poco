@@ -17,8 +17,8 @@
 
 extern "C"
 {
-#include "pcre2_config.h"
-#include "pcre2_internal.h"
+#include "external/pcre2/pcre2_config.h"
+#include "external/pcre2/pcre2_internal.h"
 }
 
 

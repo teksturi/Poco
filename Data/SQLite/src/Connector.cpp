@@ -18,7 +18,7 @@
 #if defined(POCO_UNBUNDLED)
 #include <sqlite3.h>
 #else
-#include "sqlite3.h"
+#include "external/sqlite/sqlite3.h"
 #endif
 
 

@@ -5,7 +5,7 @@ POCO_SOURCES_AUTO(SRCS ${SRCS_G})
 # Headers
 file(GLOB_RECURSE HDRS_G "include/*.h")
 POCO_HEADERS_AUTO(SRCS ${HDRS_G})
-POCO_SOURCES(SRCS pdjson src/pdjson.c)
+POCO_SOURCES(SRCS pdjson src/external/pdjson/pdjson.c)
 
 # Version Resource
 if(MSVC AND BUILD_SHARED_LIBS)
@@ -32,7 +32,7 @@ target_include_directories(JSON
 
 if(WIN32)
 	target_compile_definitions(JSON PRIVATE _CRT_SECURE_NO_WARNINGS)
-	set_source_files_properties(src/pdjson.c PROPERTIES LANGUAGE CXX)
+	set_source_files_properties(src/external/pdjson/pdjson.c PROPERTIES LANGUAGE CXX)
 	set_property(TARGET JSON PROPERTY C_STANDARD 99)
 else()
 	target_compile_features(JSON PUBLIC c_variadic_macros)

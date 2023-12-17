@@ -103,11 +103,11 @@
 #  include "winconfig.h"
 #endif
 
-#include "expat_config.h"
+#include "external/expat_config.h"
 
 #include "ascii.h"
-#include "Poco/XML/expat.h"
-#include "siphash.h"
+#include "Poco/XML/External/expat/expat.h"
+#include "external/siphash/siphash.h"
 
 #if defined(HAVE_GETRANDOM) || defined(HAVE_SYSCALL_GETRANDOM)
 #  if defined(HAVE_GETRANDOM)

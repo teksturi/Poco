@@ -23,10 +23,10 @@
 #include "Poco/File.h"
 #include "Poco/Path.h"
 #include "Poco/Mutex.h"
-#include "7z.h"
-#include "7zAlloc.h"
-#include "7zCrc.h"
-#include "7zFile.h"
+#include "external/7z/7z.h"
+#include "external/7z/7zAlloc.h"
+#include "external/7z/7zCrc.h"
+#include "external/7z/7zFile.h"
 
 
 namespace Poco {

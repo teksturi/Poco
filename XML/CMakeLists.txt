@@ -23,11 +23,11 @@ if(POCO_UNBUNDLED)
 	find_package(EXPAT REQUIRED)
 else()
 	POCO_SOURCES(SRCS expat
-		src/xmlparse.cpp
-		src/xmlrole.c
-		src/xmltok.c
-		src/xmltok_impl.c
-		src/xmltok_ns.c
+		src/external/expat/xmlparse.cpp
+		src/external/expat/xmlrole.c
+		src/external/expat/xmltok.c
+		src/external/expat/xmltok_impl.c
+		src/external/expat/xmltok_ns.c
 	)
 endif(POCO_UNBUNDLED)
 

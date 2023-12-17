@@ -24,7 +24,7 @@
 #include <limits>
 #include <clocale>
 #include <istream>
-#include "pdjson.h"
+#include "external/pdjson/pdjson.h"
 
 
 typedef struct json_stream json_stream;

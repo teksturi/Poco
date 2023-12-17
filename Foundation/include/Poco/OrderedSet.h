@@ -27,8 +27,8 @@
 #ifdef max
 #undef max
 #endif
-#include "Poco/ordered_hash.h"
-#include "Poco/ordered_set.h"
+#include "Poco/External/tessil/ordered_hash.h"
+#include "Poco/External/tessil/ordered_set.h"
 
 
 namespace Poco {

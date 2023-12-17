@@ -33,7 +33,7 @@
 #if defined(POCO_UNBUNDLED)
 #include <expat.h>
 #else
-#include "Poco/XML/expat.h"
+#include "Poco/XML/External/expat/expat.h"
 #endif
 #include <map>
 #include <vector>

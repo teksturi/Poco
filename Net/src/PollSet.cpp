@@ -23,7 +23,7 @@
 	#ifdef POCO_OS_FAMILY_WINDOWS
 		#include "Poco/Net/ServerSocket.h"
 		#include "Poco/Net/SocketAddress.h"
-		#include "wepoll.h"
+		#include "external/wepoll/wepoll.h"
 	#else
 		#include <sys/epoll.h>
 		#include <sys/eventfd.h>

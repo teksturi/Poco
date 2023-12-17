@@ -32,59 +32,59 @@ if(POCO_UNBUNDLED)
 
 	#HACK: Unicode.cpp requires functions from these files. The can't be taken from the library
 	POCO_SOURCES(SRCS RegExp
-		src/pcre2_ucd.c
-		src/pcre2_tables.c
+		src/external/pcre2/pcre2_ucd.c
+		src/external/pcre2/pcre2_tables.c
 	)
 
 else()
 	# pcre2
 	POCO_SOURCES(SRCS pcre2
-		src/pcre2_auto_possess.c
-		src/pcre2_chartables.c
-		src/pcre2_compile.c
-		src/pcre2_config.c
-		src/pcre2_context.c
-		src/pcre2_convert.c
-		src/pcre2_dfa_match.c
-		src/pcre2_error.c
-		src/pcre2_extuni.c
-		src/pcre2_find_bracket.c
-		src/pcre2_jit_compile.c
-		src/pcre2_maketables.c
-		src/pcre2_match.c
-		src/pcre2_match_data.c
-		src/pcre2_newline.c
-		src/pcre2_ord2utf.c
-		src/pcre2_pattern_info.c
-		src/pcre2_script_run.c
-		src/pcre2_serialize.c
-		src/pcre2_string_utils.c
-		src/pcre2_study.c
-		src/pcre2_substitute.c
-		src/pcre2_substring.c
-		src/pcre2_tables.c
-		src/pcre2_ucd.c
-		src/pcre2_valid_utf.c
-		src/pcre2_xclass.c
+		src/external/pcre2/pcre2_auto_possess.c
+		src/external/pcre2/pcre2_chartables.c
+		src/external/pcre2/pcre2_compile.c
+		src/external/pcre2/pcre2_config.c
+		src/external/pcre2/pcre2_context.c
+		src/external/pcre2/pcre2_convert.c
+		src/external/pcre2/pcre2_dfa_match.c
+		src/external/pcre2/pcre2_error.c
+		src/external/pcre2/pcre2_extuni.c
+		src/external/pcre2/pcre2_find_bracket.c
+		src/external/pcre2/pcre2_jit_compile.c
+		src/external/pcre2/pcre2_maketables.c
+		src/external/pcre2/pcre2_match.c
+		src/external/pcre2/pcre2_match_data.c
+		src/external/pcre2/pcre2_newline.c
+		src/external/pcre2/pcre2_ord2utf.c
+		src/external/pcre2/pcre2_pattern_info.c
+		src/external/pcre2/pcre2_script_run.c
+		src/external/pcre2/pcre2_serialize.c
+		src/external/pcre2/pcre2_string_utils.c
+		src/external/pcre2/pcre2_study.c
+		src/external/pcre2/pcre2_substitute.c
+		src/external/pcre2/pcre2_substring.c
+		src/external/pcre2/pcre2_tables.c
+		src/external/pcre2/pcre2_ucd.c
+		src/external/pcre2/pcre2_valid_utf.c
+		src/external/pcre2/pcre2_xclass.c
 	)
 
 	# zlib
 	POCO_HEADERS(SRCS zlib
-		include/Poco/zconf.h
-		include/Poco/zlib.h
+		include/Poco/External/zlib/zconf.h
+		include/Poco/External/zlib/zlib.h
 		)
 
 	POCO_SOURCES(SRCS zlib
-		src/adler32.c
-		src/compress.c
-		src/crc32.c
-		src/deflate.c
-		src/infback.c
-		src/inffast.c
-		src/inflate.c
-		src/inftrees.c
-		src/trees.c
-		src/zutil.c
+		src/external/zlib/adler32.c
+		src/external/zlib/compress.c
+		src/external/zlib/crc32.c
+		src/external/zlib/deflate.c
+		src/external/zlib/infback.c
+		src/external/zlib/inffast.c
+		src/external/zlib/inflate.c
+		src/external/zlib/inftrees.c
+		src/external/zlib/trees.c
+		src/external/zlib/zutil.c
 	)
 endif(POCO_UNBUNDLED)
 

@@ -2,8 +2,8 @@
 file(GLOB SRCS_G "src/*.cpp")
 POCO_SOURCES_AUTO(SRCS ${SRCS_G})
 if (NOT POCO_DATA_NO_SQL_PARSER)
-	file(GLOB_RECURSE SRCS_PARSER "src/sql-parser/src/*.cpp")
-	LIST(REMOVE_ITEM SRCS_PARSER "${CMAKE_CURRENT_SOURCE_DIR}/src/sql-parser/src/parser/conflict_test.cpp")
+	file(GLOB_RECURSE SRCS_PARSER "src/external/sql-parser/src/*.cpp")
+	LIST(REMOVE_ITEM SRCS_PARSER "${CMAKE_CURRENT_SOURCE_DIR}/src/external/sql-parser/src/parser/conflict_test.cpp")
 	POCO_SOURCES_AUTO(SRCS ${SRCS_PARSER})
 endif()
 
