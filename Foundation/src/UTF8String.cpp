@@ -117,6 +117,7 @@ int UTF8::icompare(const std::string& str1, std::string::size_type pos1, std::st
 
 int UTF8::icompare(const std::string& str, std::string::size_type pos, std::string::size_type n, const std::string::value_type* ptr)
 {
+	if (n == 0) return 0;
 	poco_check_ptr (ptr);
 	std::string str2(ptr); // TODO: optimize
 	return icompare(str, pos, n, str2.begin(), str2.end());

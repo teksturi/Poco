@@ -51,7 +51,10 @@ public:
 
 	HMACEngine(const char* passphrase, std::size_t length)
 	{
-		poco_check_ptr (passphrase);
+		if (length != 0)
+		{
+			poco_check_ptr(passphrase);
+		}
 
 		init(passphrase, length);
 	}

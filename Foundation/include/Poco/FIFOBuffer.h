@@ -312,8 +312,8 @@ public:
 		/// Copies the supplied data to the buffer and adjusts
 		/// the used buffer size.
 	{
-		poco_check_ptr(ptr);
 		if (0 == length) return;
+		poco_check_ptr(ptr);
 
 		Mutex::ScopedLock lock(_mutex);
 

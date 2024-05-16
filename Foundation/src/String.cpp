@@ -92,6 +92,7 @@ int icompare(const std::string& str1, std::string::size_type pos1, std::string::
 
 int icompare(const std::string& str, std::string::size_type pos, std::string::size_type n, const std::string::value_type* ptr)
 {
+	if (n == 0) return 0;
 	poco_check_ptr (ptr);
 	std::string::size_type sz = str.size();
 	if (pos > sz) pos = sz;

@@ -331,6 +331,7 @@ int icompare(
 	typename S::size_type n,
 	const typename S::value_type* ptr)
 {
+	if (n == 0) return 0;
 	poco_check_ptr (ptr);
 	typename S::size_type sz = str.size();
 	if (pos > sz) pos = sz;
