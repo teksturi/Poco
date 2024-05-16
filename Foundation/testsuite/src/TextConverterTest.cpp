@@ -20,6 +20,7 @@
 #include "Poco/Windows1251Encoding.h"
 #include "Poco/Windows1252Encoding.h"
 #include "Poco/UTF8Encoding.h"
+#include "Poco/Exception.h"
 
 
 using namespace Poco;
@@ -326,6 +327,21 @@ void TextConverterTest::testErrors()
 }
 
 
+void TextConverterTest::testPointerSafety()
+{
+	UTF8Encoding utf8Encoding;
+	Latin1Encoding latin1Encoding;
+	TextConverter converter(utf8Encoding, latin1Encoding);
+
+	std::string result;
+	try {
+		converter.convert(nullptr, 1, result);
+		fail ("must fail");
+	} catch (NullPointerException&) {};
+	converter.convert(nullptr, 0, result);
+}
+
+
 void TextConverterTest::setUp()
 {
 }
@@ -350,6 +366,7 @@ CppUnit::Test* TextConverterTest::suite()
 	CppUnit_addTest(pSuite, TextConverterTest, testCP1251toUTF8);
 	CppUnit_addTest(pSuite, TextConverterTest, testCP1252toUTF8);
 	CppUnit_addTest(pSuite, TextConverterTest, testErrors);
+	CppUnit_addTest(pSuite, TextConverterTest, testPointerSafety);
 
 	return pSuite;
 }

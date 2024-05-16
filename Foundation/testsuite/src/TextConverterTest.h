@@ -34,6 +34,7 @@ public:
 	void testCP1251toUTF8();
 	void testCP1252toUTF8();
 	void testErrors();
+	void testPointerSafety();
 
 	void setUp();
 	void tearDown();

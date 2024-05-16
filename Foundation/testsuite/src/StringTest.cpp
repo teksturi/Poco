@@ -324,6 +324,12 @@ void StringTest::testIcompare()
 	assertTrue (icompare(ss1, 2, 2, "bb") < 0);
 
 	assertTrue (icompare(ss1, 2, "aaa") > 0);
+
+	assertTrue (icompare(ss1, 0, 0, nullptr) == 0); 
+	try {
+		icompare(ss1, 0, 1, nullptr);
+		fail ("must fail");
+	} catch (Poco::NullPointerException&) {};
 }
 
 

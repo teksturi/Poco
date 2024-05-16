@@ -12,6 +12,7 @@
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/UTF8String.h"
+#include "Poco/Exception.h"
 
 
 using Poco::UTF8;
@@ -58,6 +59,14 @@ void UTF8StringTest::testCompare()
 	std::string b6("\303\234\303\226\303\204"); // "U"O"A
 
 	assertTrue (UTF8::icompare(a6, b6) == 0);
+
+	std::string a7("a");
+
+	assertTrue (UTF8::icompare(a7, 0, 0, nullptr) == 0); 
+	try {
+		UTF8::icompare(a7, 0, 1, nullptr);
+		fail ("must fail");
+	} catch (Poco::NullPointerException&) {};
 }
 
 
